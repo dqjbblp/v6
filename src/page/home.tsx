@@ -18,6 +18,7 @@ const Home = () => {
       Home
       <Button onClick={()=>dispatch(open(true))}>show tool</Button>
       <Button onClick={fetchData}>axios</Button>
+      11
     </div>
   );
 };
