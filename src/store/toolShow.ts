@@ -6,7 +6,8 @@ export const tool = createSlice({
     initialState: {
         toolShow:false,
         place:'topRight' as PlaceType,
-        message:'error'
+        message:'',
+        shotTimes:0
     },
     reducers:{
         open(state,action:PayloadAction<boolean>){
@@ -18,9 +19,12 @@ export const tool = createSlice({
         setMessage(state,action){
             state.message = action.payload
         },
+        setShowTimes(state){
+            state.shotTimes += 1
+        },
     }
 })
 
-export const {open,setMessage,setPlace} = tool.actions
+export const {open,setMessage,setPlace,setShowTimes} = tool.actions
 
 export default tool.reducer

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useEffectOnce } from 'react-use';
 import { useAppDispatch } from '../store/selfHook';
-import { setMessage } from '../store/toolShow';
+import { setMessage, setShowTimes } from '../store/toolShow';
 
 export default function Axios() {
 
@@ -13,7 +13,7 @@ export default function Axios() {
   });
 
   useEffect(() => {
-    axios.defaults.headers['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCJoeWlzYWxscGVvcGxlQGdtYWlsLmNvbVwiLFwiY2xpZW50XCI6XCJQQ1wiLFwiaXNBdXRoXCI6dHJ1ZSxcInVzZXJJZFwiOjEwMTczOCxcInVzZXJuYW1lXCI6XCJlKioqKioqXCJ9IiwiaXNzIjoibGF6eWJlYXIiLCJleHAiOjE3MTU5MTQ3NjgsImlhdCI6MTcxNTMwOTk2OH0.rUsMRbuvwiJwtHS8AUC_xVxbB9o6hwRmWnTo5azOZsztMvqfPKk1XTUgJOoDDnIZ_NAkZXdQ2HLNWjSmB2AspQ';
+    axios.defaults.headers['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCIyODI0MDU3NTQ2QHFxLmNvbVwiLFwiY2xpZW50XCI6XCJQQ1wiLFwiaXNBdXRoXCI6dHJ1ZSxcInVzZXJJZFwiOjEwMTczNCxcInVzZXJuYW1lXCI6XCLpmL_ph4zlt7Tlt7TkuI7lm5vljYHlpKfnm5fnmoTniLHmg4XkubDljZZcIn0iLCJpc3MiOiJsYXp5YmVhciIsImV4cCI6MTcxNjUzNTM0OCwiaWF0IjoxNzE1OTMwNTQ4fQ.8ivzvx_eZbN1re4RGvy_LHq0Mg2Bpj4jOxXcEY6IrZE6DueQPQmmS-eLKRpWXlwsaE3sYr2Mg43Yjn_LWl_bPg';
   }, []);
 
   useEffect(() => {
@@ -40,6 +40,7 @@ export default function Axios() {
               }
             }
             dispatch(setMessage(response.data.message))
+            dispatch(setShowTimes())
             return Promise.reject(response.data);
           }
         }

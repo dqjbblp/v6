@@ -9,6 +9,7 @@ const ToolTip = () => {
 
   const message = useAppSelector(state=>state.tool.message)
   const place = useAppSelector(state=>state.tool.place)
+  const times = useAppSelector(state=>state.tool.shotTimes)
   const dispatch = useAppDispatch()
 
   const Context = React.createContext({ name: "Default" });
@@ -16,6 +17,7 @@ const ToolTip = () => {
 
   const openNotification = (placement: NotificationPlacement) => {
     api.info({
+      key:'1',
       message: `Notification ${placement}`,
       description: (
         <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>
@@ -33,7 +35,7 @@ const ToolTip = () => {
 
   useEffect(()=>{
     message&&openNotification(place)
-  },[place,message])
+  },[place,message,times])
 
   const contextValue = {name: message };
   return (

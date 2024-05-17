@@ -2,6 +2,9 @@ import { Button } from "antd";
 import { useAppDispatch } from "../store/selfHook";
 import { open } from "../store/toolShow";
 import axios from "axios";
+// usePointsRecordsQuery, useSupportTypes2Query 
+import { useCouponListQuery} from "../api";
+import InfiniteScrollIntersection from "../component/InfiniteScrollIntersection";
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -13,11 +16,37 @@ const Home = () => {
     axios.get(`/user/support/document/typesLevel2`)
   }
 
+  // const query = useSupportTypes2Query({
+  //   id:1
+  // })
+
+  // const query2 = usePointsRecordsQuery({
+  //   type:1
+  // })
+
+  const query3 = useCouponListQuery({
+    status:1
+  })
+
+  
+
   return (
-    <div>
+    <div style={{height:'800px',overflowY:'auto'}}>
       Home
       <Button onClick={()=>dispatch(open(true))}>show tool</Button>
       <Button onClick={fetchData}>axios</Button>
+      {
+        query3.data?.pages.map((item1)=>{
+          return item1.records.map((item2,index)=>{
+            return (
+              <div key={index}>
+                {item2.amount}
+              </div>
+            )
+          })
+        })
+      }
+      <InfiniteScrollIntersection queryResult={query3} />
     </div>
   );
 };
