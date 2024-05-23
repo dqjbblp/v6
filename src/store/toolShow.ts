@@ -6,7 +6,7 @@ export const tool = createSlice({
     initialState: {
         toolShow:false,
         place:'topRight' as PlaceType,
-        message:'',
+        message:'error',
         shotTimes:0
     },
     reducers:{
