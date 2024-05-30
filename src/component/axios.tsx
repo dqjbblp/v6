@@ -10,10 +10,11 @@ export default function Axios() {
 
   useEffectOnce(() => {
     axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+    axios.defaults.timeout = 10 * 1000;
   });
 
   useEffect(() => {
-    axios.defaults.headers['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCIyODI0MDU3NTQ2QHFxLmNvbVwiLFwiY2xpZW50XCI6XCJQQ1wiLFwiaXNBdXRoXCI6dHJ1ZSxcInVzZXJJZFwiOjEwMTczNCxcInVzZXJuYW1lXCI6XCLpmL_ph4zlt7Tlt7TkuI7lm5vljYHlpKfnm5fnmoTniLHmg4XkubDljZZcIn0iLCJpc3MiOiJsYXp5YmVhciIsImV4cCI6MTcxNjUzNTM0OCwiaWF0IjoxNzE1OTMwNTQ4fQ.8ivzvx_eZbN1re4RGvy_LHq0Mg2Bpj4jOxXcEY6IrZE6DueQPQmmS-eLKRpWXlwsaE3sYr2Mg43Yjn_LWl_bPg';
+    axios.defaults.headers['Authorization'] = JSON.parse(localStorage.getItem('x-store-user') as string).state.accessToken
   }, []);
 
   useEffect(() => {
