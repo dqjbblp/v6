@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import tool from "./toolShow";
+import dialog  from "./dialog";
 
 const store = configureStore({
     reducer:{
         tool,
+        dialog
     }
 })
 

@@ -4,6 +4,7 @@ import About from "../page/about"
 import Music from "../page/music"
 import Profile from "../page/profile"
 import EChartComponent from "../page/chart"
+import Phantom from "../page/phantom"
 
 const SelfRouter = () => {
   return (
@@ -13,6 +14,7 @@ const SelfRouter = () => {
 			<Route path="music" element={<Music />} />
 			<Route path="profile" element={<Profile />} />
 			<Route path="chart" element={<EChartComponent />} />
+			<Route path="phantom" element={<Phantom />} />
 		</Routes>
 	)
 }

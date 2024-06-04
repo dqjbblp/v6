@@ -36,11 +36,11 @@ const Home = () => {
       <Button onClick={()=>dispatch(open(true))}>show tool</Button>
       <Button onClick={fetchData}>axios</Button>
       {
-        query3.data?.pages.map((item1)=>{
-          return item1.records.map((item2,index)=>{
+        query3.data?.pages.map((item1,index1)=>{
+          return item1.records.map((item2,index2)=>{
             return (
-              <div key={index}>
-                {item2.amount}
+              <div key={index2}>
+                {item2.amount}---{index1*20+index2+1}
               </div>
             )
           })

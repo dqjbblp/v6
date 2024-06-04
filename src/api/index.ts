@@ -46,6 +46,7 @@ export const usePointsRecordsQuery = (data: { type: 1 | 2 }) =>
  */
 export const useCouponListQuery = (data: { status: 1 | 2 | 3 }) =>
     useInfiniteQuery<IPage<ICoupon>>({
+      retry:false,
       queryKey: ['coupon', 'list', data],
       queryFn: async ({ pageParam }) => {
         const resp = await axios.post('/user/app-api/v1/coupon/couponFeeList', {

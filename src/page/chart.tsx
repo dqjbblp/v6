@@ -12,17 +12,18 @@ const EChartComponent = () => {
       xAxis: {
         type: "category",
         boundaryGap: false,
-        data: ["Mon", "aa", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun","Mon-2"],
+        data: ["Mon", "aa", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun","Mon-2","aa-2"],
       },
       yAxis: {
         type: "value",
       },
       series: [
         {
-          data: [-820, -850, 932, -901, 934, 1290, 1330, -1320,9999],
+          data: [-820, -850, 932, -901, 934, 1290, 1330, -1320, 9999, 10002],
           type: "line",
           smooth: true,
           areaStyle: {},
+          symbol:'none'
         },
       ],
       tooltip: {
@@ -60,8 +61,13 @@ const EChartComponent = () => {
           pieces: [
             {
               gt: 0,
-              lte: 10000,
+              lte: 9999,
               color: "red",
+            },
+            {
+              gt: 10000,
+              lte: 99999,
+              color: "orange",
             },
           ],
           outOfRange: {
