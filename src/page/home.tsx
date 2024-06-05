@@ -5,9 +5,13 @@ import axios from "axios";
 // usePointsRecordsQuery, useSupportTypes2Query 
 import { useCouponListQuery} from "../api";
 import InfiniteScrollIntersection from "../component/InfiniteScrollIntersection";
+import { useEffect } from "react";
+import { useLocalStorage } from "react-use";
 
 const Home = () => {
   const dispatch = useAppDispatch()
+
+  const [theme,setTheme] = useLocalStorage('modal','')
 
   const fetchData = () => {
     axios.get('/xstc-user/areaCode/list').then(res=>{
@@ -25,9 +29,25 @@ const Home = () => {
   // })
 
   const query3 = useCouponListQuery({
-    status:1
+    status:2
   })
 
+  useEffect(()=>{
+    const root = document.documentElement;
+    root.classList.add(Number(theme?.length)>0?theme??'light':'light');
+  },[theme])
+
+  const setDark = () => {
+    const root = document.documentElement;
+    if(theme==='dark'){
+      root.classList.remove('dark');
+      setTheme('light')
+    }else{
+      root.classList.remove('light');
+      root.classList.add('dark');
+      setTheme('dark')
+    }
+  }
   
 
   return (
@@ -35,11 +55,12 @@ const Home = () => {
       Home
       <Button onClick={()=>dispatch(open(true))}>show tool</Button>
       <Button onClick={fetchData}>axios</Button>
+      <Button onClick={setDark}>dark</Button>
       {
         query3.data?.pages.map((item1,index1)=>{
           return item1.records.map((item2,index2)=>{
             return (
-              <div key={index2}>
+              <div className={'flex bg-bg'} key={index2}>
                 {item2.amount}---{index1*20+index2+1}
               </div>
             )

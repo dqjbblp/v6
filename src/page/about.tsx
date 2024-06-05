@@ -2,11 +2,23 @@ import { Button } from "antd";
 import { useAppDispatch } from "../store/selfHook";
 import { open, setPlace } from "../store/toolShow";
 import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
-import svvg from "../assets/vite.svg"
+import svvg from "../assets/vite.svg";
 import { openDia } from "../store/dialog";
+import { useDropArea } from "react-use";
+import { useState } from "react";
 
 const About = () => {
   const dispatch = useAppDispatch();
+
+  const [url, setUrl] = useState<any>();
+
+  const [bond] = useDropArea({
+    onFiles: (files) => {
+      if (files?.[0]) {
+        next(files?.[0]);
+      }
+    },
+  });
 
   const openTool = () => {
     dispatch(setPlace("bottom"));
@@ -24,11 +36,26 @@ const About = () => {
   };
 
   const testDialog = () => {
-    dispatch(openDia({
-      title:'测试',
-      desc:'我是about页面'
-    }))
-  }
+    dispatch(
+      openDia({
+        title: "测试",
+        desc: "我是about页面",
+      })
+    );
+  };
+
+  const next = (file: File) => {
+    if (file) {
+      if (file.size > 3 * 1024 * 1024) {
+        return;
+      }
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        setUrl(e.target?.result);
+      };
+    }
+  };
 
   return (
     <div>
@@ -46,6 +73,40 @@ const About = () => {
         />
       </div>
       <Button onClick={testDialog}>测试dialog</Button>
+      <br />
+      <label>
+        <input
+          accept={"image/jpeg,image/png"}
+          className={"hidden"}
+          style={{ display: "none" }}
+          type="file"
+          onChange={(e) => {
+            if (e.target.files?.[0]) {
+              next(e.target.files?.[0]);
+            }
+          }}
+        />
+        <div
+          {...bond}
+          style={{
+            width: url?'fit-content':200,
+            height: url?'fit-content':200,
+            border: "1px dashed #999999",
+            borderRadius: 5,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor:'pointer'
+          }}
+        >
+          {
+            !url&&'上传文件(可将文件拖拽至此上传~)'
+          }
+          {
+            url&&<img src={url} />
+          }
+        </div>
+      </label>
     </div>
   );
 };

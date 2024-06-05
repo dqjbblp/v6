@@ -1,0 +1,25 @@
+@import "./styles/colors.css";
+@import "./styles/scrollbar.css";
+@import "./styles/input.reset.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式 */
+body {
+  @apply bg-bg2 text-text1 caret-primary;
+
+  font-family: 'IBM Plex Sans', system-ui;
+
+  /* Safari 上的原生滑动 */
+  overflow-scrolling: touch;
+}
+
+/*
+dvh 属性比较新，和 vh 兼容一下
+*/
+.h-dvh-vh {
+  height: 100vh;
+  height: 100dvh;
+}

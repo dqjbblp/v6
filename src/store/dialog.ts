@@ -8,8 +8,8 @@ export const dialog = createSlice({
   name: 'dialog',
     initialState: {
       dialogShow:false,
-      title:'',
-      desc:''
+      title:'OPEN',
+      desc:'默认打开'
     },
     reducers:{
       closeDia(state){

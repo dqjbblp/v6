@@ -22,7 +22,7 @@ const DiaLog = () => {
   const maskClose = (e: MouseEvent) => {
     const ele = e.target as HTMLElement;
     if (ele.className === "dia") {
-      close();
+      // close();
     }
   };
 
@@ -34,6 +34,7 @@ const DiaLog = () => {
   }, [show]);
 
   return (
+    // style={{position:'absolute',left:0,top:0,width:'100%',height:'100%',backgroundColor:'rgba(213,15,47,0.3)'}}
     <div>
       <dialog
         onClick={maskClose}

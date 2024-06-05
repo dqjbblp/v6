@@ -1,0 +1,28 @@
+/* 自定义滚动条 */
+
+::-webkit-scrollbar {
+    @apply size-1;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded;
+    @apply bg-bg5;
+}
+
+
+@layer {
+    /*
+    隐藏滚动条
+    */
+    .scrollbar-hidden {
+        scrollbar-width: none;
+    }
+
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+    }
+}

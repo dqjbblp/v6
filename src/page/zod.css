@@ -1,0 +1,34 @@
+.box {
+  position: relative;
+  width: fit-content;
+}
+
+.tix {
+  padding: 20px;
+  width: 670px;
+  height: 265px;
+  box-sizing: border-box;
+  background-color: #181818;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  clip-path: path(
+    "M0.5 20C0.5 9.23045 9.23045 0.5 20 0.5H650C660.77 0.5 669.5 9.23045 669.5 20V100V152C669.5 162.77 660.77 171.5 650 171.5H481.781C472.266 171.5 464.001 178.047 461.824 187.31L447.217 249.461C445.146 258.272 437.285 264.5 428.234 264.5H20C9.23044 264.5 0.5 255.77 0.5 245V20Z"
+  );
+}
+
+.small {
+  position: absolute;
+  right: 27px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 172px;
+  height:52px;
+  background-color: #62A1FF;
+  clip-path: path(
+    "M6.12908 8.38679C6.91958 3.55078 11.0979 0 15.9981 0H162C167.523 0 172 4.47715 172 10V42C172 47.5228 167.523 52 162 52H10.7673C4.60057 52 -0.0965133 46.4728 0.898312 40.3868L6.12908 8.38679Z"
+  );
+}

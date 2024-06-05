@@ -1,0 +1,22 @@
+/* 充值默认的输入框自动填充背景，方案来自币安 */
+input:-webkit-autofill {
+    transition: color 99999s ease-in-out 0s, background-color 99999s ease-in-out 0s;
+}
+
+/* 隐藏主流浏览器 input number 的调节按钮 Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 隐藏火狐 input number 调节按钮 Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* 隐藏第一次输入密码的时候出现自带的小眼睛 */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
