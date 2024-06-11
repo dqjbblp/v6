@@ -132,7 +132,16 @@ export default {
         backdrop: 800,
         /* Toast, 通知 */
         toast: 900
-      }
+      },
+      keyframes: {
+        fadeOut: {
+          '50%': { opacity: 1 },
+          '100%': { opacity: 0 },
+        },
+      },
+      animation: {
+        fadeOut: 'fadeOut 4s forwards',
+      },
     }
   },
   plugins: []

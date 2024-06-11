@@ -1,14 +1,17 @@
 import { Button } from "antd";
 import { useAppDispatch } from "../store/selfHook";
-import { open, setPlace } from "../store/toolShow";
+import { open, setMessage, setPlace, setShowTimes } from "../store/toolShow";
 import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import svvg from "../assets/vite.svg";
 import { openDia } from "../store/dialog";
 import { useDropArea } from "react-use";
 import { useState } from "react";
+import userNameStore from "../store/useUserStore";
 
 const About = () => {
   const dispatch = useAppDispatch();
+
+  const {setName,setAge,age} = userNameStore()
 
   const [url, setUrl] = useState<any>();
 
@@ -46,7 +49,9 @@ const About = () => {
 
   const next = (file: File) => {
     if (file) {
-      if (file.size > 3 * 1024 * 1024) {
+      if (file.size >  1024) {
+        dispatch(setMessage('图片过大'))
+        dispatch(setShowTimes())
         return;
       }
       const reader = new FileReader();
@@ -105,6 +110,10 @@ const About = () => {
           {
             url&&<img src={url} />
           }
+        </div>
+        <div>
+          <Button onClick={()=>setName('dqj')} >修改名称</Button>
+          <Button onClick={()=>setAge(age+1)}>年龄加1</Button>
         </div>
       </label>
     </div>

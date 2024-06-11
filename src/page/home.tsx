@@ -7,9 +7,12 @@ import { useCouponListQuery} from "../api";
 import InfiniteScrollIntersection from "../component/InfiniteScrollIntersection";
 import { useEffect } from "react";
 import { useLocalStorage } from "react-use";
+import userNameStore from "../store/useUserStore";
 
 const Home = () => {
   const dispatch = useAppDispatch()
+
+  const {userName,age} = userNameStore()
 
   const [theme,setTheme] = useLocalStorage('modal','')
 
@@ -56,6 +59,7 @@ const Home = () => {
       <Button onClick={()=>dispatch(open(true))}>show tool</Button>
       <Button onClick={fetchData}>axios</Button>
       <Button onClick={setDark}>dark</Button>
+      <div>测试新的状态管理器:{userName + age}</div>
       {
         query3.data?.pages.map((item1,index1)=>{
           return item1.records.map((item2,index2)=>{

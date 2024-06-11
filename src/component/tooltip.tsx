@@ -13,11 +13,14 @@ const ToolTip = () => {
   const dispatch = useAppDispatch()
 
   const Context = React.createContext({ name: "Default" });
-  const [api, contextHolder] = notification.useNotification();
+  const [api, contextHolder] = notification.useNotification({
+    stack:{
+      threshold:3
+    }
+  });
 
   const openNotification = (placement: NotificationPlacement) => {
     api.info({
-      key:'1',
       message: `Notification ${placement}`,
       description: (
         <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>
@@ -28,7 +31,8 @@ const ToolTip = () => {
         dispatch(setPlace('topRight'))
         dispatch(setMessage(''))
       },
-      duration:1
+      duration:1,
+      className:'flex bg-bg',
     });
   };
 
