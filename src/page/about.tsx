@@ -111,11 +111,11 @@ const About = () => {
             url&&<img src={url} />
           }
         </div>
+      </label>
         <div>
           <Button onClick={()=>setName('dqj')} >修改名称</Button>
           <Button onClick={()=>setAge(age+1)}>年龄加1</Button>
         </div>
-      </label>
     </div>
   );
 };
