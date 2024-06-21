@@ -14,7 +14,8 @@ export default function Axios() {
   });
 
   useEffect(() => {
-    axios.defaults.headers['Authorization'] = JSON.parse(localStorage.getItem('x-store-user') as string).state.accessToken
+    // axios.defaults.headers['Authorization'] = JSON.parse(localStorage.getItem('x-store-user') as string).state.accessToken
+    axios.defaults.headers['Authorization']='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCIyODI0MDU3NTQ2QHFxLmNvbVwiLFwiY2xpZW50XCI6XCJQQ1wiLFwiaXNBdXRoXCI6dHJ1ZSxcInVzZXJJZFwiOjEwMTY0MSxcInVzZXJuYW1lXCI6XCI1NTVcIn0iLCJpc3MiOiJsYXp5YmVhciIsImV4cCI6MTcxOTU0NTA0NywiaWF0IjoxNzE4OTQwMjQ3fQ.2PGl53mw8aQzYsakZx3FV-R9kUBcDIBNikw79313STHYA6SECE_s2RvlAs9B7e0Y4QeIVoDEyjavZw7UDIe08w'
   }, []);
 
   useEffect(() => {
