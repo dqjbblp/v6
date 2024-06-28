@@ -2,12 +2,15 @@ import { Controller, useForm } from "react-hook-form";
 import "./zod.css";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "antd";
 import { useDropArea } from "react-use";
+import OTPInput from "../component/VerInput";
+import Son, { IRef } from "../component/Son";
 
 const ZodStudy = () => {
   const [url, setUrl] = useState<any>();
+  const SonRef = useRef<IRef>(null)
 
   const ver = z
     .object({
@@ -142,6 +145,10 @@ const ZodStudy = () => {
 
       {errors.chartImages && errors.chartImages.message}
       <Button onClick={handleSubmit(totalInfo)} htmlType={"submit"}>提交</Button>
+      <OTPInput length={6} />
+
+      <Button onClick={()=>SonRef.current?.sonevent()}>子组件的时间</Button>
+      <Son ref={SonRef} />
     </form>
   );
 };
