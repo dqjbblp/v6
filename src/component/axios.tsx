@@ -15,7 +15,7 @@ export default function Axios() {
 
   useEffect(() => {
     // axios.defaults.headers['Authorization'] = JSON.parse(localStorage.getItem('x-store-user') as string).state.accessToken
-    axios.defaults.headers['Authorization']='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCIyODI0MDU3NTQ2QHFxLmNvbVwiLFwiY2xpZW50XCI6XCJQQ1wiLFwiaXNBdXRoXCI6dHJ1ZSxcInVzZXJJZFwiOjEwMTY0MSxcInVzZXJuYW1lXCI6XCI1NTVcIn0iLCJpc3MiOiJsYXp5YmVhciIsImV4cCI6MTcxOTU0NTA0NywiaWF0IjoxNzE4OTQwMjQ3fQ.2PGl53mw8aQzYsakZx3FV-R9kUBcDIBNikw79313STHYA6SECE_s2RvlAs9B7e0Y4QeIVoDEyjavZw7UDIe08w'
+    axios.defaults.headers['Authorization']='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCIyODI0MDU3NTQ2QHFxLmNvbVwiLFwiY2xpZW50XCI6XCJBUFBcIixcImlzQXV0aFwiOnRydWUsXCJ1c2VySWRcIjoxMDE2NDEsXCJ1c2VybmFtZVwiOlwiNTU1XCJ9IiwiaXNzIjoibGF6eWJlYXIiLCJleHAiOjE3MjA0MjM0NDQsImlhdCI6MTcxOTgxODY0NH0.rzMgOhaIjhTQl5rfkVpjRP3EVm2PeCS0WhVRTFkjt9DMOI1ven3n2QAhjtPYihYNLPP7GKoJBWTFT80r4kKGrg'
   }, []);
 
   useEffect(() => {

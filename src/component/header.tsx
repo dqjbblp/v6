@@ -10,6 +10,9 @@ const Header = () => {
       <Button onClick={()=>nav('')}>回主页</Button>
       <Button onClick={()=>nav('about')}>去about</Button>
       <Button onClick={()=>nav('music')}>去Music</Button>
+      <Button onClick={()=>nav('sw2')}>去sw2</Button>
+      <Button onClick={()=>nav('sw1')}>去sw1</Button>
+      <Button onClick={()=>nav('zod')}>zod</Button>
     </div>
   );
 };

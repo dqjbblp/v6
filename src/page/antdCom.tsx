@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Button, Divider, InputNumber, notification, Space, Switch } from 'antd';
+import { Outlet, useParams } from 'react-router-dom';
 
 const Context = React.createContext({ name: 'Default' });
 
@@ -13,6 +14,10 @@ const AntdCom: React.FC = () => {
         }
       : false,
   });
+
+  const {id} = useParams()
+  console.log(id);
+  
 
   const openNotification = () => {
     api.open({
@@ -51,6 +56,8 @@ const AntdCom: React.FC = () => {
         <Button type="primary" onClick={openNotification}>
           Open the notification box
         </Button>
+
+        <Outlet />
       </div>
     </Context.Provider>
   );

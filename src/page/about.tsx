@@ -7,6 +7,7 @@ import { openDia } from "../store/dialog";
 import { useDropArea } from "react-use";
 import { useState } from "react";
 import userNameStore from "../store/useUserStore";
+import { Outlet } from "react-router-dom";
 
 const About = () => {
   const dispatch = useAppDispatch();
@@ -116,6 +117,8 @@ const About = () => {
           <Button onClick={()=>setName('dqj')} >修改名称</Button>
           <Button onClick={()=>setAge(age+1)}>年龄加1</Button>
         </div>
+
+      <Outlet />
     </div>
   );
 };
