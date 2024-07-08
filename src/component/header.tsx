@@ -13,6 +13,7 @@ const Header = () => {
       <Button onClick={()=>nav('sw2')}>去sw2</Button>
       <Button onClick={()=>nav('sw1')}>去sw1</Button>
       <Button onClick={()=>nav('zod')}>zod</Button>
+      <Button onClick={()=>nav('canvas')}>canvas</Button>
     </div>
   );
 };

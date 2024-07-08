@@ -21,6 +21,7 @@ const Music = () => {
   type Valid = z.infer<typeof ver>;
   const {
     register,
+    watch,
     handleSubmit,
     formState:{errors}
   } = useForm<Valid>({
@@ -53,6 +54,11 @@ const Music = () => {
     console.log(data);
   };
 
+  //监听num1的变化
+  const num1 = watch('num1')
+
+
+
   return (
     <div>
       <Button
@@ -79,7 +85,7 @@ const Music = () => {
       <form>
         <div style={{display:'flex',flexDirection:'column',gap:16,maxWidth:300,marginTop:20}}>
           <div>
-            <input {...register('num1')} placeholder="..."  />
+            <input {...register('num1')} placeholder="..."  />--{num1?.length ?? 0}
             {errors.num1&&errors.num1.message}
           </div>
           <div>

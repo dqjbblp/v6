@@ -10,6 +10,7 @@ import AntdCom from "../page/antdCom";
 import Sw1 from "../page/sw1";
 import Sw2 from "../page/sw2";
 import { ReactNode } from "react";
+import Sign from "../page/canvas";
 
 const SelfRouter = () => {
   const routeT = [
@@ -50,6 +51,7 @@ const SelfRouter = () => {
       <Route path="antd" element={<AntdCom />}>
         <Route path=":id" element={<div>antd的子组件</div>} />
       </ Route>
+      <Route path='canvas' element={<Sign />} />
       {RouteMap(routeT)}
     </Routes>
   );
