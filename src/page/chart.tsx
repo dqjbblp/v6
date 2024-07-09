@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 import { CallbackDataParams } from "echarts/types/dist/shared.js";
+import AreaChart from "../component/AreaChart";
 
 const EChartComponent = () => {
   const chartRef = useRef(null);
@@ -12,7 +13,18 @@ const EChartComponent = () => {
       xAxis: {
         type: "category",
         boundaryGap: false,
-        data: ["Mon", "aa", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun","Mon-2","aa-2"],
+        data: [
+          "Mon",
+          "aa",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+          "Sun",
+          "Mon-2",
+          "aa-2",
+        ],
       },
       yAxis: {
         type: "value",
@@ -23,14 +35,14 @@ const EChartComponent = () => {
           type: "line",
           smooth: true,
           areaStyle: {},
-          symbol:'none'
+          symbol: "none",
         },
       ],
       tooltip: {
-        trigger: 'axis',
-        formatter: function (params:CallbackDataParams[]) {
-          let result = '';
-          params.forEach(item => {
+        trigger: "axis",
+        formatter: function (params: CallbackDataParams[]) {
+          let result = "";
+          params.forEach((item) => {
             result += `
               <div style="padding:5px;">
                 <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${item.color};margin-right:5px;"></span>
@@ -45,11 +57,11 @@ const EChartComponent = () => {
             </div>
           `;
         },
-        backgroundColor: 'pink',
-        borderColor: '#ccc',
+        backgroundColor: "pink",
+        borderColor: "#ccc",
         borderWidth: 1,
         textStyle: {
-          color: 'red',
+          color: "red",
           fontSize: 12,
         },
       },
@@ -82,7 +94,12 @@ const EChartComponent = () => {
     };
   }, []);
 
-  return <div ref={chartRef} style={{ width: "100%", height: "400px" }} />;
+  return (
+    <>
+      <div ref={chartRef} style={{ width: "100%", height: "400px" }} />
+      <AreaChart />
+    </>
+  );
 };
 
 export default EChartComponent;
