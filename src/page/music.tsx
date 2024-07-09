@@ -5,6 +5,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDropArea } from "react-use";
+import CanSeeMusic from "../component/canseeMusic";
 
 const Music = () => {
   const { setDesc } = useSelfTool();
@@ -104,6 +105,7 @@ const Music = () => {
 
         <Button onClick={handleSubmit(totalInfo)} htmlType={"submit"}>提交</Button>
       </form>
+      <CanSeeMusic />
     </div>
   );
 };
