@@ -12,7 +12,7 @@ const AreaChart = () => {
       { date: new Date(2020, 3, 1), value: 60 },
       { date: new Date(2020, 4, 1), value: 20 },
       { date: new Date(2020, 5, 1), value: 90 },
-      { date: new Date(2020, 6, 1), value: 50 },
+      { date: new Date(2020, 6, 1), value: -10 },
     ];
 
     const svg = d3.select(svgRef.current)
@@ -30,7 +30,7 @@ const AreaChart = () => {
       .range([0, width]);
 
     const y = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.value) as number])
+      .domain([d3.min(data, d => d.value) as number, d3.max(data, d => d.value) as number])
       .range([height, 0]);
 
     const area = d3.area<{ date: Date, value: number }>()

@@ -55,7 +55,7 @@ const Home = () => {
 
   return (
     <div style={{height:'800px',overflowY:'auto'}}>
-      Home
+      <div className={"text-text3"}>Home</div>
       <Button onClick={()=>dispatch(open(true))}>show tool</Button>
       <Button onClick={fetchData}>axios</Button>
       <Button onClick={setDark}>dark</Button>

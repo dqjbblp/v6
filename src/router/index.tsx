@@ -11,6 +11,8 @@ import Sw1 from "../page/sw1";
 import Sw2 from "../page/sw2";
 import { ReactNode } from "react";
 import Sign from "../page/canvas";
+import Mise from "../page/ProMise";
+import Ani from "../page/ani";
 
 const SelfRouter = () => {
   const routeT = [
@@ -52,6 +54,8 @@ const SelfRouter = () => {
         <Route path=":id" element={<div>antd的子组件</div>} />
       </ Route>
       <Route path='canvas' element={<Sign />} />
+      <Route path="mise" element={<Mise />} />
+      <Route path="ani" element={<Ani />} />
       {RouteMap(routeT)}
     </Routes>
   );

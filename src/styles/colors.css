@@ -13,7 +13,7 @@
         /* 文字 1 */
         --color-text1: 41 41 41;
         --color-text2: 134 134 138;
-        --color-text3: 153 153 153;
+        --color-text3: 153 153 0;
     }
 
     :root[class~="dark"] {
@@ -30,6 +30,6 @@
         /* 文字 1 */
         --color-text1: 240 236 235;
         --color-text2: 156 156 156;
-        --color-text3: 126 126 126;
+        --color-text3: 126 0 126;
     }
 }

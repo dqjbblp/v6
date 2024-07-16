@@ -17,7 +17,10 @@ const ZodStudy = () => {
       // num: z.string().nonempty("请输入"),
       num: z.string().min(1, "请输入"),
       num2: z.coerce
-        .number()
+        .number({
+          invalid_type_error:"要数字啊",
+          required_error:'你没输入啊'
+        })
         .refine((val) => val >= 100, {
           message: "不能小于100",
         })
@@ -45,6 +48,7 @@ const ZodStudy = () => {
     control,
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Valid>({
     resolver: zodResolver(ver),
@@ -56,6 +60,9 @@ const ZodStudy = () => {
 
   const totalInfo = (data: Valid) => {
     console.log(data);
+    setError('num',{
+      message:'我让你错的~~~'
+    })
   };
 
   const [bond] = useDropArea({

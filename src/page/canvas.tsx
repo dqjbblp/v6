@@ -1,9 +1,6 @@
 import { Button } from "antd";
 import { useEffect, useRef, useState } from "react";
 
-interface Window {
-  showDirectoryPicker: () => Promise<FileSystemDirectoryHandle>;
-}
 
 const Sign = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -44,7 +41,7 @@ const Sign = () => {
     }
   };
 
-  const canvasUp = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const canvasUp = () => {
     isClick = false;
     ctx?.closePath();
   };

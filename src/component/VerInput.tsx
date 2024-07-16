@@ -25,10 +25,22 @@ const OTPInput = (props:{length:number}) => {
     }
   };
 
+  const keyDown = (e:React.KeyboardEvent<HTMLInputElement>,it:number) => {
+    console.log(e.key);
+    
+    if(e.keyCode===39&&it<length-1){
+      inputRefs.current[it + 1].focus();
+    }
+    if(e.keyCode===37&&it>0){
+      inputRefs.current[it - 1].focus();
+    }
+  }
+
   return (
     <div>
       {values.map((value, index) => (
         <input
+          onKeyDownCapture={(e)=>keyDown(e,index)}
           key={index}
           type="text"
           maxLength={1}

@@ -14,6 +14,7 @@ const Header = () => {
       <Button onClick={()=>nav('sw1')}>去sw1</Button>
       <Button onClick={()=>nav('zod')}>zod</Button>
       <Button onClick={()=>nav('canvas')}>canvas</Button>
+      <Button onClick={()=>nav('ani')}>ani</Button>
     </div>
   );
 };

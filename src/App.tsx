@@ -1,30 +1,27 @@
-import { createContext } from "react"
-import Footer from "./component/footer"
-import Header from "./component/header"
-import SelfRouter from "./router"
-import userNameStore from "./store/useUserStore"
+import { createContext } from "react";
+import Footer from "./component/footer";
+import Header from "./component/header";
+import SelfRouter from "./router";
+import userNameStore from "./store/useUserStore";
 
-
-
-export const MuContext = createContext<{count:number}>({count:0})
+export const MuContext = createContext<{ count: number }>({ count: 0 });
 
 function App() {
-
-  const {age} = userNameStore()
+  const { age } = userNameStore();
 
   return (
-    
-    <MuContext.Provider value={{count:age}}>
-    <div style={{minHeight:'100vh',display:'flex',flexDirection:'column'}}>
-      <Header/>
-      <SelfRouter />
-      <div style={{marginTop:'auto'}}>
-        <Footer />
+    <MuContext.Provider value={{ count: age }}>
+      <div
+        style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+      >
+        <Header />
+        <SelfRouter />
+        <div style={{ marginTop: "auto" }}>
+          <Footer />
+        </div>
       </div>
-    </div>
-    
     </MuContext.Provider>
-  )
+  );
 }
 
-export default App
+export default App;
