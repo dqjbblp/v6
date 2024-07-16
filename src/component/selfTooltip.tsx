@@ -16,14 +16,14 @@ const SelfTool = () => {
      * 添加到尾部
      * */
     setToasts((x) => _.concat(x, desc));
-
+    
+    setDesc(undefined);
     /*
      * 2 秒后移除刚才添加的 Toast
      * */
     _.delay(() => {
       setToasts((x) => _.tail(x));
-      setDesc(undefined);
-    }, 4 * 1000);
+    }, 2 * 1000);
   }, [setDesc, desc, toasts]);
 
   return (
