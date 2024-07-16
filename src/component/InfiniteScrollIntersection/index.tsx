@@ -19,7 +19,7 @@ export default function InfiniteScrollIntersection(props: { queryResult: UseInfi
       }
     }
     
-  }, [inter?.intersectionRatio, props.queryResult.isFetched,props.queryResult.hasNextPage]);
+  }, [inter?.intersectionRatio, props.queryResult.isFetched]);
 
   return (
     <div className={'grid h-16 place-items-center'} ref={ref}>
