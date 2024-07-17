@@ -23,14 +23,6 @@ const Home = () => {
     axios.get(`/user/support/document/typesLevel2`)
   }
 
-  // const query = useSupportTypes2Query({
-  //   id:1
-  // })
-
-  // const query2 = usePointsRecordsQuery({
-  //   type:1
-  // })
-
   const query3 = useCouponListQuery({
     status:2
   })

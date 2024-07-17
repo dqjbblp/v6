@@ -5,11 +5,13 @@ import { immer } from "zustand/middleware/immer";
 type State = {
   userName: string;
   age: number;
+  token?:string
 };
 
 type Actions = {
   setName: (name: string) => void;
   setAge: (age: number) => void;
+  setToken:(token:string) => void
 };
 
 const userNameStore = create<State & Actions>()(
@@ -28,6 +30,11 @@ const userNameStore = create<State & Actions>()(
             state.age = age;
           });
         },
+        setToken:(token) => {
+          set(state=>{
+            state.token = token
+          })
+        }
       })),
       {
         name: "x-store-wallet",

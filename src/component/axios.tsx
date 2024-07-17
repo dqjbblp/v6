@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import { useEffectOnce } from 'react-use';
 import { useAppDispatch } from '../store/selfHook';
 import { setMessage, setShowTimes } from '../store/toolShow';
+import userNameStore from '../store/useUserStore';
 
 export default function Axios() {
   const dispatch = useAppDispatch();
+  const {token} = userNameStore()
 
   useEffectOnce(() => {
     axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
@@ -28,9 +30,8 @@ export default function Axios() {
   });
 
   useEffect(() => {
-    // axios.defaults.headers['Authorization'] = JSON.parse(localStorage.getItem('x-store-user') as string).state.accessToken
-    axios.defaults.headers['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJhY2NvdW50XCI6XCIyODI0MDU3NTQ2QHFxLmNvbVwiLFwiY2xpZW50XCI6XCJBUFBcIixcImlzQXV0aFwiOnRydWUsXCJ1c2VySWRcIjoxMDE2NDEsXCJ1c2VybmFtZVwiOlwiNTU1XCJ9IiwiaXNzIjoibGF6eWJlYXIiLCJleHAiOjE3MjE3MDM3MTIsImlhdCI6MTcyMTA5ODkxMn0.g5xsC6_nB4JqjEg4jV3eb1XRYCEUGFz-Li7zPjvCPiQOkvTqYWb-pKJhpqorVXKNf1N5MZT0dtLAE4ed-ihlkg';
-  }, []);
+    axios.defaults.headers['Authorization'] = token || ''
+  }, [token]);
 
   useEffect(() => {
     axios.defaults.headers['Accept-Language'] = 'zh-CN' ?? null;

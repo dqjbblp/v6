@@ -13,6 +13,7 @@ import Sign from "../page/canvas";
 import Mise from "../page/ProMise";
 import Ani from "../page/ani";
 import React from "react";
+import Login from "../page/login";
 
 const Home = React.lazy(() => import("../page/home"));
 
@@ -42,6 +43,10 @@ const SelfRouter = () => {
         },
       ],
     },
+    {
+      path:'/login',
+      component:<Login />
+    }
   ];
 
   const RouteMap = (routeList: any): ReactNode =>
