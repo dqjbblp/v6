@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "../page/home";
 import About from "../page/about";
 import Music from "../page/music";
 import Profile from "../page/profile";
@@ -9,20 +8,39 @@ import ZodStudy from "../page/zod";
 import AntdCom from "../page/antdCom";
 import Sw1 from "../page/sw1";
 import Sw2 from "../page/sw2";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Sign from "../page/canvas";
 import Mise from "../page/ProMise";
 import Ani from "../page/ani";
+import React from "react";
+
+const Home = React.lazy(() => import("../page/home"));
 
 const SelfRouter = () => {
   const routeT = [
     {
       path: "/sw1",
       component: <Sw1 />,
+      children: [
+        {
+          path: "sw1son",
+          component: <div>sw1son</div>,
+        },
+      ],
     },
     {
       path: "/sw2",
       component: <Sw2 />,
+      children: [
+        {
+          path: "sw2son1",
+          component: <div>sw2son1</div>,
+        },
+        {
+          path: "sw2son2",
+          component: <div>sw2son2</div>,
+        },
+      ],
     },
   ];
 
@@ -35,29 +53,33 @@ const SelfRouter = () => {
           element={
             item.component && <Ruler show={index > 0}>{item.component}</Ruler>
           }
-        ></Route>
+        >
+          {item.children && RouteMap(item.children)}
+        </Route>
       );
     });
 
   return (
-    <Routes>
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />}>
-        <Route path="detail" element={<div>123</div>} />
-      </Route>
-      <Route path="music" element={<Music />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="chart" element={<EChartComponent />} />
-      <Route path="phantom" element={<Phantom />} />
-      <Route path="zod" element={<ZodStudy />} />
-      <Route path="antd" element={<AntdCom />}>
-        <Route path=":id" element={<div>antd的子组件</div>} />
-      </ Route>
-      <Route path='canvas' element={<Sign />} />
-      <Route path="mise" element={<Mise />} />
-      <Route path="ani" element={<Ani />} />
-      {RouteMap(routeT)}
-    </Routes>
+    <Suspense fallback={<div>加载中...</div>}>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />}>
+          <Route path="detail" element={<div>123</div>} />
+        </Route>
+        <Route path="music" element={<Music />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="chart" element={<EChartComponent />} />
+        <Route path="phantom" element={<Phantom />} />
+        <Route path="zod" element={<ZodStudy />} />
+        <Route path="antd" element={<AntdCom />}>
+          <Route path=":id" element={<div>antd的子组件</div>} />
+        </Route>
+        <Route path="canvas" element={<Sign />} />
+        <Route path="mise" element={<Mise />} />
+        <Route path="ani" element={<Ani />} />
+        {RouteMap(routeT)}
+      </Routes>
+    </Suspense>
   );
 };
 

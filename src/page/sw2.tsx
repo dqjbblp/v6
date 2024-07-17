@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react"
 import { MuContext } from "../App";
+import { Outlet } from "react-router-dom";
 
 const Sw2 = () => {
 
@@ -10,7 +11,10 @@ const Sw2 = () => {
   
 
   return (
-    <div>路由守卫2</div>
+    <div>
+      路由守卫2
+      <Outlet />
+    </div>
   )
 }
 
