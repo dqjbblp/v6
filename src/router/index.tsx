@@ -14,6 +14,8 @@ import Mise from "../page/ProMise";
 import Ani from "../page/ani";
 import React from "react";
 import Login from "../page/login";
+import Socket from "../page/socket";
+import Wzq from "../page/wzq";
 
 const Home = React.lazy(() => import("../page/home"));
 
@@ -46,6 +48,14 @@ const SelfRouter = () => {
     {
       path:'/login',
       component:<Login />
+    },
+    {
+      path:'socket',
+      component:<Socket />
+    },
+    {
+      path:'wzq',
+      component:<Wzq />
     }
   ];
 

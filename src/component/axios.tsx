@@ -4,9 +4,11 @@ import { useEffectOnce } from 'react-use';
 import { useAppDispatch } from '../store/selfHook';
 import { setMessage, setShowTimes } from '../store/toolShow';
 import userNameStore from '../store/useUserStore';
+import { useNavigate } from 'react-router-dom';
 
 export default function Axios() {
   const dispatch = useAppDispatch();
+  const nav = useNavigate()
   const {token} = userNameStore()
 
   useEffectOnce(() => {
@@ -54,6 +56,7 @@ export default function Axios() {
                  * */
                 case 4003: {
                   console.log('失效');
+                  nav('/login')
                   break;
                 }
               }
