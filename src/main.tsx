@@ -9,6 +9,7 @@ import TotalComponent from "./page/somecomponents/index.tsx";
 import TankStackQueryProvider from "./providers/reactquery.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Auth0ProviderWithHistory from "./auth0.tsx";
+import "./Locales/index.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -16,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Provider store={store}>
         <GoogleOAuthProvider clientId="59803650015-eqh0s59imo6gafg6gdp61n9althhajmo.apps.googleusercontent.com">
           <Auth0ProviderWithHistory>
-
             {/* 这里的TotalComponent必须在<App />前面,
             因为TotalComponent里的axios要在前面,
             如果不在前面,
