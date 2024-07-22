@@ -46,17 +46,17 @@ const SelfRouter = () => {
       ],
     },
     {
-      path:'/login',
-      component:<Login />
+      path: "/login",
+      component: <Login />,
     },
     {
-      path:'socket',
-      component:<Socket />
+      path: "socket",
+      component: <Socket />,
     },
     {
-      path:'wzq',
-      component:<Wzq />
-    }
+      path: "wzq",
+      component: <Wzq />,
+    },
   ];
 
   const RouteMap = (routeList: any): ReactNode =>

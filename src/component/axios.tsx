@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useEffectOnce } from 'react-use';
-import { useAppDispatch } from '../store/selfHook';
-import { setMessage, setShowTimes } from '../store/toolShow';
-import userNameStore from '../store/useUserStore';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useEffect } from "react";
+import { useEffectOnce } from "react-use";
+import { useAppDispatch } from "../store/selfHook";
+import { setMessage, setShowTimes } from "../store/toolShow";
+import userNameStore from "../store/useUserStore";
+import { useNavigate } from "react-router-dom";
 
 export default function Axios() {
   const dispatch = useAppDispatch();
-  const nav = useNavigate()
-  const {token} = userNameStore()
+  const nav = useNavigate();
+  const { token } = userNameStore();
 
   useEffectOnce(() => {
     axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
@@ -18,10 +18,12 @@ export default function Axios() {
     // 添加请求拦截器
     axios.interceptors.request.use(
       (config) => {
-        if (axios.defaults.baseURL !== 'http://192.168.1.71:10099/') {
-          console.log('Not in the development environment, skipping API call.');
+        if (axios.defaults.baseURL !== "http://192.168.1.71:10099/") {
+          console.log("Not in the development environment, skipping API call.");
           // 取消请求
-          return Promise.reject({ message: 'Not in the development environment' });
+          return Promise.reject({
+            message: "Not in the development environment",
+          });
         }
         return config;
       },
@@ -32,11 +34,11 @@ export default function Axios() {
   });
 
   useEffect(() => {
-    axios.defaults.headers['Authorization'] = token || ''
+    axios.defaults.headers["Authorization"] = token || "";
   }, [token]);
 
   useEffect(() => {
-    axios.defaults.headers['Accept-Language'] = 'zh-CN' ?? null;
+    axios.defaults.headers["Accept-Language"] = "zh-CN" ?? null;
   }, []);
 
   useEffectOnce(() => {
@@ -55,8 +57,8 @@ export default function Axios() {
                  * Token 失效
                  * */
                 case 4003: {
-                  console.log('失效');
-                  nav('/login')
+                  console.log("失效");
+                  // nav('/login')
                   break;
                 }
               }

@@ -6,11 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 全局样式 */
 body {
+  /* 这个代表全局默认使用这个样式 */
   @apply bg-bg2 text-text1 caret-primary;
 
-  font-family: 'IBM Plex Sans', system-ui;
+  font-family: "IBM Plex Sans", system-ui;
 
   /* Safari 上的原生滑动 */
   overflow-scrolling: touch;

@@ -1,35 +1,35 @@
 @layer base {
-    :root {
-        /* 背景色，内容 */
-        --color-bg: 255 255 255;
-        /* 背景色：低色 */
-        --color-bg2: 246 248 248;
-        /* 次级按钮背景色 */
-        --color-btn-secondary: 228 228 228;
-        /* 分割线 */
-        --color-divider: 237 238 240;
-        /* 弹窗 */
-        --color-popup-bg: 255 255 255;
-        /* 文字 1 */
-        --color-text1: 41 41 41;
-        --color-text2: 134 134 138;
-        --color-text3: 153 153 0;
-    }
+  :root {
+    /* 背景色，内容 */
+    --color-bg: 255 255 255;
+    /* 背景色：低色 */
+    --color-bg2: 246 248 248;
+    /* 次级按钮背景色 */
+    --color-btn-secondary: 228 228 228;
+    /* 分割线 */
+    --color-divider: 237 238 240;
+    /* 弹窗 */
+    --color-popup-bg: 255 255 255;
+    /* 文字 1 */
+    --color-text1: 41 41 41;
+    --color-text2: 134 134 138;
+    --color-text3: 153 153 0;
+  }
 
-    :root[class~="dark"] {
-        /* 背景色，内容 */
-        --color-bg: 31 31 36;
-        /* 背景色：低色 */
-        --color-bg2: 23 23 26;
-        /* 次级按钮背景色 */
-        --color-btn-secondary: 46 46 51;
-        /* 分割线 */
-        --color-divider: 52 52 56;
-        /* 弹窗 */
-        --color-popup-bg: 38 38 42;
-        /* 文字 1 */
-        --color-text1: 240 236 235;
-        --color-text2: 156 156 156;
-        --color-text3: 126 0 126;
-    }
+  :root[class~="dark"] {
+    /* 背景色，内容 */
+    --color-bg: 31 31 36;
+    /* 背景色：低色 */
+    --color-bg2: 23 23 26;
+    /* 次级按钮背景色 */
+    --color-btn-secondary: 46 46 51;
+    /* 分割线 */
+    --color-divider: 52 52 56;
+    /* 弹窗 */
+    --color-popup-bg: 38 38 42;
+    /* 文字 1 */
+    --color-text1: 240 236 235;
+    --color-text2: 156 156 156;
+    --color-text3: 126 0 126;
+  }
 }
