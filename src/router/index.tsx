@@ -16,6 +16,8 @@ import React from "react";
 import Login from "../page/login";
 import Socket from "../page/socket";
 import Wzq from "../page/wzq";
+import Gsap from "../page/gsap";
+import Gsap2 from "../page/gsap2";
 
 const Home = React.lazy(() => import("../page/home"));
 
@@ -56,6 +58,14 @@ const SelfRouter = () => {
     {
       path: "wzq",
       component: <Wzq />,
+    },
+    {
+      path: "gsap",
+      component: <Gsap />,
+    },
+    {
+      path: "gsap2",
+      component: <Gsap2 />,
     },
   ];
 

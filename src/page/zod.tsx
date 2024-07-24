@@ -10,39 +10,38 @@ import Son, { IRef } from "../component/Son";
 
 const ZodStudy = () => {
   const [url, setUrl] = useState<any>();
-  const SonRef = useRef<IRef>(null)
+  const SonRef = useRef<IRef>(null);
 
-  const ver = z
-    .object({
-      // num: z.string().nonempty("请输入"),
-      num: z.string().min(1, "请输入"),
-      num2: z.coerce
-        .number({
-          invalid_type_error:"要数字啊",
-          required_error:'你没输入啊'
-        })
-        .refine((val) => val >= 100, {
-          message: "不能小于100",
-        })
-        .refine((val) => {
-          if (val > 1000) {
-            return false;
-          } else {
-            return true;
-          }
-        }, "不能大于1000"),
-      email: z.coerce.string().email("非法邮箱"),
-      // chartImages: z
-      //   .array(z.instanceof(File), { required_error: "至少一个" })
-      //   .min(1, "至少一个"),
-      chartImages: z.instanceof(File, {
-        message: "请上传证件照",
-      }),
-    })
-    // .refine((data) => {
-    //   console.log(data);
-    //   这里就是验证的全部数据
-    // });
+  const ver = z.object({
+    // num: z.string().nonempty("请输入"),
+    num: z.string().min(1, "请输入"),
+    num2: z.coerce
+      .number({
+        invalid_type_error: "要数字啊",
+        required_error: "你没输入啊",
+      })
+      .refine((val) => val >= 100, {
+        message: "不能小于100",
+      })
+      .refine((val) => {
+        if (val > 1000) {
+          return false;
+        } else {
+          return true;
+        }
+      }, "不能大于1000"),
+    email: z.coerce.string().email("非法邮箱"),
+    // chartImages: z
+    //   .array(z.instanceof(File), { required_error: "至少一个" })
+    //   .min(1, "至少一个"),
+    chartImages: z.instanceof(File, {
+      message: "请上传证件照",
+    }),
+  });
+  // .refine((data) => {
+  //   console.log(data);
+  //   这里就是验证的全部数据
+  // });
   type Valid = z.infer<typeof ver>;
   const {
     control,
@@ -60,9 +59,9 @@ const ZodStudy = () => {
 
   const totalInfo = (data: Valid) => {
     console.log(data);
-    setError('num',{
-      message:'我让你错的~~~'
-    })
+    setError("num", {
+      message: "我让你错的~~~",
+    });
   };
 
   const [bond] = useDropArea({
@@ -127,7 +126,7 @@ const ZodStudy = () => {
                   style={{ display: "none" }}
                   onChange={(e) => {
                     if (e.target.files) {
-                      field.onChange(e.target.files[0])
+                      field.onChange(e.target.files[0]);
                       next(e.target.files[0]);
                     }
                   }}
@@ -138,7 +137,7 @@ const ZodStudy = () => {
                 <Button
                   onClick={() => {
                     setUrl("");
-                    field.onChange(url)
+                    field.onChange(url);
                   }}
                   style={{ position: "absolute", right: "0%", top: "0%" }}
                 >
@@ -151,10 +150,12 @@ const ZodStudy = () => {
       </label>
 
       {errors.chartImages && errors.chartImages.message}
-      <Button onClick={handleSubmit(totalInfo)} htmlType={"submit"}>提交</Button>
+      <Button onClick={handleSubmit(totalInfo)} htmlType={"submit"}>
+        提交
+      </Button>
       <OTPInput length={6} />
 
-      <Button onClick={()=>SonRef.current?.sonevent()}>子组件的时间</Button>
+      <Button onClick={() => SonRef.current?.sonevent()}>子组件的时间</Button>
       <Son ref={SonRef} />
     </form>
   );

@@ -1,43 +1,42 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef } from "react"
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 
 export interface IRef {
-  sonevent: () => void
+  sonevent: () => void;
 }
 
-const Son = forwardRef<IRef>((_,ref) => {
-
-  const sonRef = useRef<HTMLDivElement|null>(null)
+const Son = forwardRef<IRef>((_, ref) => {
+  const sonRef = useRef<HTMLDivElement | null>(null);
 
   const sonevent = () => {
-    console.log('我是子组件');
-  }
+    console.log("我是子组件");
+  };
 
   const ob = new IntersectionObserver(
-    (e)=>{
-      console.log(123,e[0]);
-      
-    },{
-      root:null,
-      threshold:0,
+    (e) => {
+      console.log(123, e[0]);
+    },
+    {
+      root: null,
+      threshold: 0,
       // rootMargin:'100px'
     }
-  )
+  );
 
-  useEffect(()=>{
-    if(sonRef.current){
-      ob.observe(sonRef.current)
+  useEffect(() => {
+    if (sonRef.current) {
+      ob.observe(sonRef.current);
     }
-  },[sonRef])
+  }, [sonRef]);
 
-  useImperativeHandle(ref,()=>({
-    sonevent
-  }),[])
+  useImperativeHandle(
+    ref,
+    () => ({
+      sonevent,
+    }),
+    []
+  );
 
-  return (
-    <div ref={sonRef}>
-      Son 组件
-    </div>
-  )
-})
+  return <div ref={sonRef}>Son 组件</div>;
+});
 
-export default Son
+export default Son;
