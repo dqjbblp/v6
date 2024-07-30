@@ -48,6 +48,7 @@ const ZodStudy = () => {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: { errors },
   } = useForm<Valid>({
     resolver: zodResolver(ver),
@@ -153,6 +154,7 @@ const ZodStudy = () => {
       <Button onClick={handleSubmit(totalInfo)} htmlType={"submit"}>
         提交
       </Button>
+      <Button onClick={() => reset()}>重置</Button>
       <OTPInput length={6} />
 
       <Button onClick={() => SonRef.current?.sonevent()}>子组件的时间</Button>

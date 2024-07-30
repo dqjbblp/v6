@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import VivoDemo from "../component/VivoDemo";
+import Din from "../component/DinDinDemo";
 
 const Gsap2 = () => {
   const ref1 = useRef<HTMLDivElement>(null);
@@ -89,6 +90,8 @@ const Gsap2 = () => {
 
       <VivoDemo />
 
+      <Din />
+
       <section
         className={
           "w-full h-dvh bg-orange-600 flex gap-5 justify-center items-center"
@@ -131,10 +134,9 @@ const Gsap2 = () => {
       </section>
 
       <section ref={se3} className={"w-full h-dvh bg-rose-300 flex gap-5"}>
-        <li className={"size-[100px] bg-red-950"} />
-        <li className={"size-[100px] bg-red-950"} />
-        <li className={"size-[100px] bg-red-950"} />
-        <li className={"size-[100px] bg-red-950"} />
+        {[1, 2, 3, 4].map((_, id) => {
+          return <li key={id} className={"size-[100px] bg-red-950"} />;
+        })}
       </section>
     </div>
   );

@@ -9,17 +9,15 @@ import DiaLog from "../dialog";
 const TotalComponent = () => {
   const show = useAppSelector((state) => state.dialog.dialogShow);
 
-  const {show:show2} = useModalTool()
+  const { show: show2 } = useModalTool();
 
   return (
     <div>
       <SelfTool />
       <ToolTip />
       <Axios />
-      {show2&&<TotalModal />}
-      {
-        show&&<DiaLog />
-      }
+      {show2 && <TotalModal />}
+      {show && <DiaLog />}
     </div>
   );
 };

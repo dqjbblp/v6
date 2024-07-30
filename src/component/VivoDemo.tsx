@@ -93,6 +93,7 @@ const VivoDemo = () => {
             markers: true,
             pin: true,
             scrub: true,
+            invalidateOnRefresh: true,
           },
         })
         .fromTo(

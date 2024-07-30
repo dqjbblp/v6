@@ -1,22 +1,22 @@
 import { useDeferredValue, useEffect, useState } from "react";
 import useSelfTool, { IToast } from "../store/useSelfTool";
-import _ from 'lodash';
+import _ from "lodash";
 
 const SelfTool = () => {
-  const { desc,setDesc } = useSelfTool();
+  const { desc, setDesc } = useSelfTool();
   const [toasts, setToasts] = useState<IToast[]>([]);
   const toastsDeferred = useDeferredValue(toasts);
 
   useEffect(() => {
     if (!desc) return;
-    
+
     if (_.isEqual(_.last(toasts), desc)) return;
 
     /*
      * 添加到尾部
      * */
     setToasts((x) => _.concat(x, desc));
-    
+
     setDesc(undefined);
     /*
      * 2 秒后移除刚才添加的 Toast
@@ -36,7 +36,9 @@ const SelfTool = () => {
         return (
           <div
             key={index}
-            className={`${toastsDeferred ? "bg-bg" : " bg-transparent"} w-64 h-8 border rounded-2xl text-center my${index}`}
+            className={`${
+              toastsDeferred ? "bg-bg" : " bg-transparent"
+            } w-64 h-8 border rounded-2xl text-center my${index}`}
           >
             {item.message}
           </div>
