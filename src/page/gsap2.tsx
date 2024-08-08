@@ -8,6 +8,7 @@ const Gsap2 = () => {
   const ref1 = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement[]>([]);
 
+  const swagRef = useRef<HTMLDivElement>(null);
   const se3 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -80,11 +81,27 @@ const Gsap2 = () => {
     }
   }, [se3]);
 
+  useEffect(() => {
+    if (swagRef.current) {
+      gsap.to(swagRef.current, {
+        left: 100,
+        repeat: -1,
+        yoyo: true, //设置这个,就不会突然回到开始的地方，而是动画回去
+        duration: 0.2,
+      });
+    }
+  }, [swagRef]);
+
   return (
     <div>
       <section
         className={"w-full h-dvh flex items-center justify-center bg-lime-600"}
-      />
+      >
+        <div
+          ref={swagRef}
+          className={"w-[200px] h-10 bg-violet-950 absolute left-10"}
+        />
+      </section>
 
       {/* <div ref={ref1} className={"size-[100px] bg-green-400"} /> */}
 

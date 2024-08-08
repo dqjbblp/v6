@@ -1,3 +1,7 @@
+/**
+ * persist这个是持久化的配置
+ */
+
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";

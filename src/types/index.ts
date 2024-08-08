@@ -1,4 +1,9 @@
-import { PublicKey, Transaction, VersionedTransaction, SendOptions } from "@solana/web3.js";
+import {
+  PublicKey,
+  Transaction,
+  VersionedTransaction,
+  SendOptions,
+} from "@solana/web3.js";
 
 export interface IResponse<T> {
   code: number;
@@ -62,24 +67,23 @@ export interface ICoupon {
   useScope?: string;
 }
 
-type DisplayEncoding = 'utf8' | 'hex';
+type DisplayEncoding = "utf8" | "hex";
 
-type PhantomEvent = 'connect' | 'disconnect' | 'accountChanged';
+type PhantomEvent = "connect" | "disconnect" | "accountChanged";
 
 type PhantomRequestMethod =
-  | 'connect'
-  | 'disconnect'
-  | 'signAndSendTransaction'
-  | 'signAndSendTransactionV0'
-  | 'signAndSendTransactionV0WithLookupTable'
-  | 'signTransaction'
-  | 'signAllTransactions'
-  | 'signMessage';
+  | "connect"
+  | "disconnect"
+  | "signAndSendTransaction"
+  | "signAndSendTransactionV0"
+  | "signAndSendTransactionV0WithLookupTable"
+  | "signTransaction"
+  | "signAllTransactions"
+  | "signMessage";
 
 interface ConnectOpts {
   onlyIfTrusted: boolean;
 }
-
 
 export interface PhantomProvider {
   publicKey: PublicKey | null;

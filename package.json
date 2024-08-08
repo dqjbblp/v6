@@ -13,6 +13,7 @@
   "dependencies": {
     "@antv/g2": "^5.1.20",
     "@auth0/auth0-react": "^2.2.4",
+    "@floating-ui/react": "^0.26.22",
     "@hookform/resolvers": "^3.6.0",
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.2.4",
