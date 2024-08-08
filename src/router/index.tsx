@@ -19,6 +19,7 @@ import Wzq from "../page/wzq";
 import Gsap from "../page/gsap";
 import Gsap2 from "../page/gsap2";
 import Gsap3 from "../page/gsap3";
+import Gsap4 from "../page/gsap4";
 
 const Home = React.lazy(() => import("../page/home"));
 
@@ -71,6 +72,10 @@ const SelfRouter = () => {
     {
       path: "gsap3",
       component: <Gsap3 />,
+    },
+    {
+      path: "gsap4",
+      component: <Gsap4 />,
     },
   ];
 

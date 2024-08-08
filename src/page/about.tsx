@@ -12,7 +12,13 @@ import { Outlet } from "react-router-dom";
 const About = () => {
   const dispatch = useAppDispatch();
 
-  const {setName,setAge,age} = userNameStore()
+  //这种是用在函数式组件：tsx中，ts中不能使用
+  const { setName, setAge, age } = userNameStore();
+
+  //这个则是则ts中也可以使用
+  // userNameStore.setState({ userName: "hy", age: 23 });
+  const ag2 = userNameStore.getState().age;
+  console.log(ag2);
 
   const [url, setUrl] = useState<any>();
 
@@ -50,9 +56,9 @@ const About = () => {
 
   const next = (file: File) => {
     if (file) {
-      if (file.size >  1024) {
-        dispatch(setMessage('图片过大'))
-        dispatch(setShowTimes())
+      if (file.size > 1024) {
+        dispatch(setMessage("图片过大"));
+        dispatch(setShowTimes());
         return;
       }
       const reader = new FileReader();
@@ -95,29 +101,24 @@ const About = () => {
         <div
           {...bond}
           style={{
-            width: url?'fit-content':200,
-            height: url?'fit-content':200,
+            width: url ? "fit-content" : 200,
+            height: url ? "fit-content" : 200,
             border: "1px dashed #999999",
             borderRadius: 5,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            cursor:'pointer'
+            cursor: "pointer",
           }}
         >
-          {
-            !url&&'上传文件(可将文件拖拽至此上传~)'
-          }
-          {
-            url&&<img src={url} />
-          }
+          {!url && "上传文件(可将文件拖拽至此上传~)"}
+          {url && <img src={url} />}
         </div>
       </label>
-        <div>
-          <Button onClick={()=>setName('dqj')} >修改名称</Button>
-          <Button onClick={()=>setAge(age+1)}>年龄加1</Button>
-        </div>
-
+      <div>
+        <Button onClick={() => setName("dqj")}>修改名称</Button>
+        <Button onClick={() => setAge(age + 1)}>年龄加1</Button>
+      </div>
       <Outlet />
     </div>
   );

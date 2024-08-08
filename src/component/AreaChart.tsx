@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import * as d3 from 'd3';
+import React, { useEffect, useRef } from "react";
+import * as d3 from "d3";
 
 const AreaChart = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -15,51 +15,75 @@ const AreaChart = () => {
       { date: new Date(2020, 6, 1), value: -10 },
     ];
 
-    const svg = d3.select(svgRef.current)
-      .attr('width', 100)
-      .attr('height', 60);
+    const svg = d3.select(svgRef.current).attr("width", 100).attr("height", 60);
 
     const margin = { top: 5, right: 0, bottom: 5, left: 0 };
-    const width = +svg.attr('width') - margin.left - margin.right;
-    const height = +svg.attr('height') - margin.top - margin.bottom;
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
 
-    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const g = svg
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    const x = d3.scaleTime()
-      .domain(d3.extent(data, d => d.date) as [Date, Date])
+    const x = d3
+      .scaleTime()
+      .domain(d3.extent(data, (d) => d.date) as [Date, Date])
       .range([0, width]);
 
-    const y = d3.scaleLinear()
-      .domain([d3.min(data, d => d.value) as number, d3.max(data, d => d.value) as number])
+    const y = d3
+      .scaleLinear()
+      .domain([
+        d3.min(data, (d) => d.value) as number,
+        d3.max(data, (d) => d.value) as number,
+      ])
       .range([height, 0]);
 
-    const area = d3.area<{ date: Date, value: number }>()
-    .x(d => x(d.date))
-    .y0(height)
-    .y1(d => y(d.value))
-    .curve(d3.curveCatmullRom); // 使用平滑曲线
-
-    const line = d3.line<{ date: Date, value: number }>()
-      .x(d => x(d.date))
-      .y(d => y(d.value))
+    const area = d3
+      .area<{ date: Date; value: number }>()
+      .x((d) => x(d.date))
+      .y0(height)
+      .y1((d) => y(d.value))
       .curve(d3.curveCatmullRom); // 使用平滑曲线
 
-    g.append('path')
-      .datum(data)
-      .attr('fill', 'blue')
-      .attr('d', area);
+    const line = d3
+      .line<{ date: Date; value: number }>()
+      .x((d) => x(d.date))
+      .y((d) => y(d.value))
+      .curve(d3.curveCatmullRom); // 使用平滑曲线
 
-    g.append('path')
+    // g.append("path").datum(data).attr("fill", "blue").attr("d", area);
+    const gradient = g
+      .append("defs")
+      .append("linearGradient")
+      .attr("id", "gradient")
+      .attr("x1", "0%")
+      .attr("y1", "0%")
+      .attr("x2", "0%")
+      .attr("y2", "100%");
+
+    // 定义渐变的颜色和位置
+    gradient.append("stop").attr("offset", "0%").attr("stop-color", "#BC50FF");
+
+    gradient
+      .append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", "#FF4593");
+
+    // 应用渐变到路径
+    g.append("path")
       .datum(data)
-      .attr('fill', 'none')
-      .attr('stroke', 'red')
-      .attr('stroke-width', 2)
-      .attr('d', line);
+      .attr("fill", "url(#gradient)") // 使用定义好的渐变
+      .attr("d", area);
+
+    g.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "red")
+      .attr("stroke-width", 2)
+      .attr("d", line);
   }, []);
 
-  return (
-    <svg ref={svgRef}></svg>
-  );
+  return <svg ref={svgRef}></svg>;
 };
 
 export default AreaChart;
