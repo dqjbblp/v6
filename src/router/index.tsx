@@ -20,6 +20,7 @@ import Gsap from "../page/gsap";
 import Gsap2 from "../page/gsap2";
 import Gsap3 from "../page/gsap3";
 import Gsap4 from "../page/gsap4";
+import Websoc from "../page/webSocket";
 
 const Home = React.lazy(() => import("../page/home"));
 
@@ -76,6 +77,10 @@ const SelfRouter = () => {
     {
       path: "gsap4",
       component: <Gsap4 />,
+    },
+    {
+      path: "websocket",
+      component: <Websoc />,
     },
   ];
 

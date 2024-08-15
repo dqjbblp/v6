@@ -1,8 +1,10 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  return <button onClick={() => loginWithRedirect()}>Log In with Google</button>;
+  return (
+    <button onClick={() => loginWithRedirect()}>Log In with Google</button>
+  );
 };
 
 const LogoutButton = () => {
@@ -13,7 +15,6 @@ const LogoutButton = () => {
 const Profile = () => {
   const { user } = useAuth0();
   console.log(user);
-  
 
   return (
     <div>
@@ -27,4 +28,4 @@ const Profile = () => {
   );
 };
 
-export default Profile
+export default Profile;

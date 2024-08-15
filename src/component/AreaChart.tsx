@@ -36,6 +36,7 @@ const AreaChart = () => {
         d3.min(data, (d) => d.value) as number,
         d3.max(data, (d) => d.value) as number,
       ])
+      .nice()
       .range([height, 0]);
 
     const area = d3
@@ -43,15 +44,14 @@ const AreaChart = () => {
       .x((d) => x(d.date))
       .y0(height)
       .y1((d) => y(d.value))
-      .curve(d3.curveCatmullRom); // 使用平滑曲线
+      .curve(d3.curveCatmullRom);
 
     const line = d3
       .line<{ date: Date; value: number }>()
       .x((d) => x(d.date))
       .y((d) => y(d.value))
-      .curve(d3.curveCatmullRom); // 使用平滑曲线
+      .curve(d3.curveCatmullRom);
 
-    // g.append("path").datum(data).attr("fill", "blue").attr("d", area);
     const gradient = g
       .append("defs")
       .append("linearGradient")
@@ -61,26 +61,53 @@ const AreaChart = () => {
       .attr("x2", "0%")
       .attr("y2", "100%");
 
-    // 定义渐变的颜色和位置
     gradient.append("stop").attr("offset", "0%").attr("stop-color", "#BC50FF");
-
     gradient
       .append("stop")
       .attr("offset", "100%")
       .attr("stop-color", "#FF4593");
 
-    // 应用渐变到路径
-    g.append("path")
-      .datum(data)
-      .attr("fill", "url(#gradient)") // 使用定义好的渐变
-      .attr("d", area);
+    // Clip path for area animation
+    const clipPath = g
+      .append("defs")
+      .append("clipPath")
+      .attr("id", "clip")
+      .append("rect")
+      .attr("width", 0)
+      .attr("height", height);
 
-    g.append("path")
+    // Apply clip path to area path
+    const areaPath = g
+      .append("path")
+      .datum(data)
+      .attr("fill", "url(#gradient)")
+      .attr("d", area)
+      .attr("clip-path", "url(#clip)");
+
+    const linePath = g
+      .append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "red")
       .attr("stroke-width", 2)
       .attr("d", line);
+
+    // Line animation
+    const totalLength = (linePath.node() as SVGPathElement).getTotalLength();
+    linePath
+      .attr("stroke-dasharray", totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0);
+
+    // Area animation
+    clipPath
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr("width", width);
   }, []);
 
   return <svg ref={svgRef}></svg>;

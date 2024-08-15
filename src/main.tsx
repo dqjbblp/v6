@@ -10,25 +10,28 @@ import TankStackQueryProvider from "./providers/reactquery.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Auth0ProviderWithHistory from "./auth0.tsx";
 import "./Locales/index.ts";
+import { WebsocketProvider } from "./providers/websocketProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <TankStackQueryProvider>
-      <Provider store={store}>
-        <GoogleOAuthProvider clientId="59803650015-eqh0s59imo6gafg6gdp61n9althhajmo.apps.googleusercontent.com">
-          <Auth0ProviderWithHistory>
-            {/* 这里的TotalComponent必须在<App />前面,
+    <WebsocketProvider>
+      <TankStackQueryProvider>
+        <Provider store={store}>
+          <GoogleOAuthProvider clientId="59803650015-eqh0s59imo6gafg6gdp61n9althhajmo.apps.googleusercontent.com">
+            <Auth0ProviderWithHistory>
+              {/* 这里的TotalComponent必须在<App />前面,
             因为TotalComponent里的axios要在前面,
             如果不在前面,
             会默认已本地的localhost为默认的url调一次接口,
             其次就是当用滚动刷新的接口时,要多写一个依赖项
             */}
 
-            <TotalComponent />
-            <App />
-          </Auth0ProviderWithHistory>
-        </GoogleOAuthProvider>
-      </Provider>
-    </TankStackQueryProvider>
+              <TotalComponent />
+              <App />
+            </Auth0ProviderWithHistory>
+          </GoogleOAuthProvider>
+        </Provider>
+      </TankStackQueryProvider>
+    </WebsocketProvider>
   </BrowserRouter>
 );
