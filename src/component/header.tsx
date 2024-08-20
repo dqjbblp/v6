@@ -1,3 +1,4 @@
+import { TonConnectButton } from "@tonconnect/ui-react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +24,11 @@ const Header = () => {
       <Button onClick={() => nav("zod")}>zod</Button>
       <Button onClick={() => nav("canvas")}>canvas</Button>
       <Button onClick={() => nav("ani")}>ani</Button>
+      <div className={"flex-1 justify-end flex"}>
+        <div>
+          <TonConnectButton />
+        </div>
+      </div>
     </div>
   );
 };

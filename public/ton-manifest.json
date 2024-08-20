@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:3001",
+  "name": "TON Vote",
+  "iconUrl": "http://localhost:3001/vite.svg",
+  "termsOfUseUrl": "使用条款文档的 url",
+  "privacyPolicyUrl": "隐私政策文档的 url"
+}
