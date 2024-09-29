@@ -83,20 +83,38 @@ const Gsap2 = () => {
 
   useEffect(() => {
     if (swagRef.current) {
-      gsap.to(swagRef.current, {
-        left: 100,
-        repeat: -1,
-        yoyo: true, //设置这个,就不会突然回到开始的地方，而是动画回去
-        duration: 0.2,
-      });
+      gsap.fromTo(
+        swagRef.current,
+        {
+          y: 0,
+          opacity: 0,
+        },
+        {
+          y: 100,
+          opacity: 1,
+          // repeat: -1,
+          duration: 2,
+          ease: "bounce.out", // 添加弹跳效果
+          // scrollTrigger: {
+          //   trigger: ".aaaa",
+          //   scrub: true,
+          //   start: "bottom 80%",
+          //   end: "+=100",
+          //   once: true,
+          // },
+        }
+      );
     }
   }, [swagRef]);
 
   return (
     <div>
       <section
-        className={"w-full h-dvh flex items-center justify-center bg-lime-600"}
+        className={
+          "w-full h-dvh flex items-center justify-center bg-lime-600 aaaa"
+        }
       >
+        <div>12354</div>
         <div
           ref={swagRef}
           className={"w-[200px] h-10 bg-violet-950 absolute left-10"}
